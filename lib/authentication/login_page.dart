@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_mge_maulana_ade_fathurrozaqi/bottom_nav/bottom_navbar.dart';
 
 class LoginPage extends StatefulWidget {
+  static const String route = '/login';
   const LoginPage({super.key});
 
   @override
