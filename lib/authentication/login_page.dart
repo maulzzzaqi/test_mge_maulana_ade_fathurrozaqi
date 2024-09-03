@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_mge_maulana_ade_fathurrozaqi/bottom_nav/bottom_navbar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -93,12 +94,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              usernameError = usernameController.text != 'maulana' ? 'Username tidak ditemukan' : null;
                               passwordError = passwordController.text != '123456' ? 'Password tidak sesuai' : null;
                             });
 
-                            if (usernameError == null && passwordError == null) {
-                              Navigator.pushReplacementNamed(context, '/bottom_navbar');
+                            if (passwordError == null) {
+                              Navigator.pushReplacement(context, MaterialPageRoute(
+                                builder: (context) => BottomNavbar(username: usernameController.text,)
+                              ));
                             }
                           },
                           child: const Text('Submit', style: TextStyle(color: Colors.white),),
