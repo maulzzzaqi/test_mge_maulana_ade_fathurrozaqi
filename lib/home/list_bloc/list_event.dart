@@ -13,3 +13,12 @@ class FetchList extends ListEvent {
   @override
   List<Object> get props => [];
 }
+
+class DeleteList extends ListEvent {
+  final dynamic list;
+
+  const DeleteList(this.list);
+
+  @override
+  List<Object> get props => [list];
+}

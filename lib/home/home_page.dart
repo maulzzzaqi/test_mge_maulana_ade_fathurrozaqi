@@ -49,7 +49,32 @@ class HomePage extends StatelessWidget {
                           });
                         },
                         trailing: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text('Delete item'),
+                                  content: const Text('Are you sure want to delete this item?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        context.read<ListBloc>().add(DeleteList(item));
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('Yes'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('No'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
                           icon: const Icon(Icons.delete),
                         ),
                       );

@@ -21,5 +21,12 @@ class ListBloc extends Bloc<ListEvent, ListState> {
         emit(ListError(e.toString()));
       }
     });
+    on<DeleteList>((event, emit) {
+      final currentState = state;
+      if (currentState is ListLoaded) {
+        final newList = List.from(currentState.list)..remove(event.list);
+        emit(ListLoaded(newList));
+      }
+    });
   }
 }
