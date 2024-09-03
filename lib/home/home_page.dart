@@ -27,6 +27,27 @@ class HomePage extends StatelessWidget {
                         leading: Image.network(item['thumbnailUrl']),
                         title: Text(item['title']),
                         subtitle: Text(item['url']),
+                        onTap: () {
+                          showDialog(context: context, builder: (context) {
+                            return AlertDialog(
+                              title: Text(item['title']),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Image.network(item['url']),
+                                ],
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                )
+                              ],
+                            );
+                          });
+                        },
                         trailing: IconButton(
                           onPressed: () {},
                           icon: const Icon(Icons.delete),
